@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title Agregar Nuevo Médico
+    link(rel='stylesheet', href='/styles.css')
+  body
+    .container
+      h1 Agregar Nuevo Médico
+
+      form(action="/profesionales/nuevo", method="POST")
+        div
+          label(for="nombre") Nombre Completo
+          input(type="text" name="nombre_completo" required)
+        
+        div
+          label(for="especialidades") Especialidades
+          select(name="especialidades" multiple required)
+            each especialidad in especialidades
+              option(value=especialidad.id) #{especialidad.nombre}
+        
+        div
+          button(type="submit" class="button") Guardar
+
+      a(href="/profesionales" class="button") Volver a la Lista

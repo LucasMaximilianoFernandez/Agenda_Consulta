@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title Editar Médico
+    link(rel='stylesheet', href='/styles.css')
+  body
+    .container
+      h1 Editar Médico
+
+      form(action=`/profesionales/${profesional.id}/editar`, method="POST")
+        div
+          label(for="nombre_completo") Nombre Completo
+          input(type="text" name="nombre_completo" value=profesional.nombre_completo required)
+
+        div
+          label(for="especialidades") Especialidades
+          select(name="especialidades" multiple required)
+            each especialidad in especialidades
+              option(value=especialidad.id selected=profesional.especialidades.includes(especialidad.nombre)) #{especialidad.nombre}
+
+        div
+          button(type="submit" class="button") Guardar
+
+      a(href="/profesionales" class="button") Volver a la Lista
